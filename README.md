@@ -1,4 +1,4 @@
-# JS personal frameworks
+# JS personal framework
 
 ## Usage
 Later
