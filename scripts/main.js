@@ -1,4 +1,4 @@
-(function () {
+;(function () {
 /*	var d = document.querySelector('.testAnimation');
 
 
@@ -8,4 +8,8 @@
 	})
 */
 	alert(R4.language());
+
+
+	//R4.SameHeight.init(['.news-bloc .news-bloc-item'], 630);
+
 }());
