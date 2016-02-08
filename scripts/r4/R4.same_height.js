@@ -1,38 +1,68 @@
-/*(function ($) {
-  var tab_elem, max_height;
+//  Exemple
+//  -----------------------------
 
-  function init () {
-    max_height = 0;
-    tab_elem = $('.views-row .row-wrapper-border');
-    $('.views-row .row-wrapper-border').css('height', '');
+;(function (window, document, undefined) {
+	'use strict';
+	var document = window.document;
+	R4.modules.SameHeight = {
+    var that,
+    decalage = 0,
+    max_width;
 
-    size();
-  }
+		//first function to call
+		init : function (_tab, _max_width){
+		  that = this;
+			max_width = _max_width;
 
-  function size () {
-    for (var i = 0; i < $(tab_elem).length; i++) {
-      var elem = $(tab_elem[i]);
-      
-      if($(tab_elem[i]).height() > max_height) {
-        max_height = $(tab_elem[i]).height();
-      };
-    };
-    $('.views-row .row-wrapper-border').css('height', max_height+30+'px')
-  }
-  if($('.view-phototheque-ecotourisme').length) {
-    if(window.innerWidth > 580){
-      init();
-    }else{
-      $('.views-row .row-wrapper-border').css('height', '')
-    }
-    $(window).on('resize', function () {
-      if(window.innerWidth > 580){
-        init();
-      }else{
-        $('.views-row .row-wrapper-border').css('height', '')
-      }
-    })
-  };
-})(jQuery);*/
+			tab_elem = document.querySelectorAll(_tab.toString());
 
-//Exemple for futur module
+			this.resize();
+		},
+
+		resize: function () {
+			that = this;
+			if(window.innerWidth > max_width){
+				this.searchMaxHeight(tab_elem);
+				this.applySameHeight(tab_elem);
+			}
+			window.addEventListener('resize', function(event){
+				if(window.innerWidth > max_width){
+					that.resetMaxHeight(tab_elem);
+					that.searchMaxHeight(tab_elem);
+					that.applySameHeight(tab_elem);
+				}else{
+					that.resetMaxHeight(tab_elem);
+				}
+			});
+		},
+
+		searchMaxHeight: function (_elements) {
+			max_height = 0;
+			for (var i = 0, len = _elements.length; i < len; i++) {
+				var elem = _elements[i];
+				if(elem.offsetHeight > max_height) {
+					max_height = elem.clientHeight;
+				};
+			};
+		},
+
+		applySameHeight: function (_elements) {
+			for (var i = 0, len = _elements.length; i < len; i++) {
+				var elem = _elements[i];
+
+				elem.style.height = max_height+'px';
+			};
+		},
+
+		resetMaxHeight: function (_elements) {
+			for (var i = 0, len = _elements.length; i < len; i++) {
+				var elem = _elements[i];
+
+				elem.style.height = '';
+			};
+		}
+	}
+}(window, window.document));
+
+//  MADE WITH ❤  \\
+//  -----------------------------
