@@ -1,4 +1,4 @@
-# library R4
+# R4 library
 
 
 
@@ -10,19 +10,25 @@
 * ES6 test setup with [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/).
 * Linting with [ESLint](http://eslint.org/).
 
-## Process
+## Folder
 
 ```
-ES6 source files
-       |
-       |
-    webpack
-       |
-       +--- babel, eslint
-       |
-  ready to use
-     library
-  in umd format
+.git
+lib/
+  R4.min.js
+  R4.min.js.map
+node_modules/
+src/
+  index.js
+test/
+  library.spec.js
+.babalrc
+.eslintrc
+LICENCE
+package.json
+README.md
+webpack.config.js
+
 ```
 
 ## Scripts
